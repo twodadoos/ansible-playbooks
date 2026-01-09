@@ -1,2 +1,15 @@
-[all]
-example-host ansible_host=127.0.0.1
+---
+all:
+  hosts:
+    example-host:
+      ansible_host: 127.0.0.1
+      ansible_user: youruser
+
+  children:
+    web:
+      hosts:
+        example-host: {}
+
+    db:
+      hosts:
+        example-host: {}
