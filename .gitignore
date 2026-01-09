@@ -1,0 +1,56 @@
+# ----------------------------------------
+# Ansible artifacts and runtime files
+# ----------------------------------------
+
+# Retry files
+*.retry
+
+# Temporary / fact cache
+.ansible/
+ansible_facts_cache/
+facts_cache/
+
+# Vault-related temp files
+*.vault
+*.vault.tmp
+
+# ----------------------------------------
+# Inventory and variable overrides
+# ----------------------------------------
+
+# Common local inventory patterns
+inventory/
+inventories/*/hosts
+inventories/*/group_vars/
+inventories/*/host_vars/
+
+# Local variable overrides
+group_vars/all/local.yml
+host_vars/*/local.yml
+
+# Logs and output
+*.log
+ansible.log
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+
+# Vim
+*.swp
+*.swo
+*.swn
+
+# VS Code
+.vscode/
+
+# Python virtual environments 
+venv/
+.venv/
+env/
+.env/
+
+# Misc
+*.tmp
+*.bak
+*.old
