@@ -1,4 +1,4 @@
-## Ansible Playbooks
+## ansible-playbooks
 
 This repository contains a collection of Ansible playbooks intended for Linux system administration, infrastructure automation, and operational tasks. The playbooks focus on common, practical use cases such as host configuration, service management, application deployment, container and Kubernetes-related operations, and routine automation workflows. They are designed to be readable, modular, and easy to adapt to different environments.
 
@@ -17,3 +17,56 @@ Some playbooks may require elevated privileges (for example, via become).
 Inventory structure, variable organization, and role layout may vary by playbook and are intended as examples rather than rigid standards.
 
 You should always review variables, defaults, and tasks to ensure alignment with your own operational requirements.
+
+### **_Quick Start_**
+
+#### Clone the repository
+
+```
+git clone https://github.com/twodadoos/ansible-playbooks.git
+
+cd ansible-playbooks
+```
+
+#### Copy and customize an inventory
+
+Start from the safe example inventory:
+
+```
+cp inventories/example/hosts.example inventories/dev/hosts
+```
+
+* Edit inventories/dev/hosts with your actual hostnames, IPs, and users
+
+* Choose the inventory that matches your environment (dev, prod, et cetera)
+
+#### Review variables
+
+* Check group_vars/all.yml for shared variables.
+
+* Check host_vars/<hostname>.yml for host-specific overrides.
+
+* Adjust values as needed for your environment.
+
+### Run a playbook (dry run first)
+
+```
+ansible-playbook -i inventories/dev/hosts playbooks/webserver.yml
+```
+
+* **--check** simulates changes without applying them
+* **--diff** shows what would change in files/templates
+
+#### Apply changes
+
+Once satisfied with the dry run:
+
+```
+ansible-playbook -i inventories/dev/hosts playbooks/webserver.yml
+```
+
+**_Optional_**: Run the full site orchestration f you have a master playbook like site.yml:
+
+```
+ansible-playbook -i inventories/dev/hosts playbooks/site.yml
+```
